@@ -1,230 +1,130 @@
+
 package be.helha.projet.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import be.helha.projet.model.Actor;
 
 
 public class Movie {
 
 
-    private Integer unit;
-    private Integer showId;
-    private String showTitle;
-    private String releaseYear;
-    private String rating;
-    private String category;
-    private String showCast;
-    private String director;
-    private String summary;
-    private String poster;
-    private Integer mediatype;
-    private String runtime;
+
+    private String backdropPath;
+    private List<String> genres;
+    private int id;
+    private String posterPath;
+    private String releaseDate;
+    private int revenue;
+    private int runtime;
+    private String overview;
+    private String title;
+    private List<Actor> actors;
+    private String release_date;
+
+
+
+    private double voteAverage;
+    private int voteCount;
 
     /**
-     *
-     * @param summary
-     * @param unit
-     * @param showCast
-     * @param category
-     * @param poster
-     * @param showId
-     * @param runtime
-     * @param rating
-     * @param director
-     * @param showTitle
-     * @param mediatype
-     * @param releaseYear
+     * No args constructor for use in serialization
+     * 
      */
-    public Movie(Integer unit, Integer showId, String showTitle, String releaseYear, String rating, String category, String showCast, String director, String summary, String poster, Integer mediatype, String runtime) {
-        super();
-        this.unit = unit;
-        this.showId = showId;
-        this.showTitle = showTitle;
-        this.releaseYear = releaseYear;
-        this.rating = rating;
-        this.category = category;
-        this.showCast = showCast;
-        this.director = director;
-        this.summary = summary;
-        this.poster = poster;
-        this.mediatype = mediatype;
-        this.runtime = runtime;
-    }
-
     public Movie() {
     }
 
-    public Integer getUnit() {
-        return unit;
+
+    public String getBackdropPath() {
+        return backdropPath;
     }
 
-    public void setUnit(Integer unit) {
-        this.unit = unit;
+    public void setBackdropPath(String backdropPath) {
+        this.backdropPath = backdropPath;
     }
 
-    public Movie withUnit(Integer unit) {
-        this.unit = unit;
-        return this;
+
+    public List<String> getGenres() {
+        return genres;
     }
 
-    public Integer getShowId() {
-        return showId;
+    public void setGenres(List<String> genres) {
+        this.genres = genres;
     }
 
-    public void setShowId(Integer showId) {
-        this.showId = showId;
+    public int getId() {
+        return id;
     }
 
-    public Movie withShowId(Integer showId) {
-        this.showId = showId;
-        return this;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getShowTitle() {
-        return showTitle;
+    public String getOverview() {
+        return overview;
     }
 
-    public void setShowTitle(String showTitle) {
-        this.showTitle = showTitle;
+    public void setOverview(String overview) {
+        this.overview = overview;
     }
 
-    public Movie withShowTitle(String showTitle) {
-        this.showTitle = showTitle;
-        return this;
+    public String getPosterPath() {
+        return posterPath;
     }
 
-    public String getReleaseYear() {
-        return releaseYear;
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
     }
 
-    public void setReleaseYear(String releaseYear) {
-        this.releaseYear = releaseYear;
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
-    public Movie withReleaseYear(String releaseYear) {
-        this.releaseYear = releaseYear;
-        return this;
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
-    public String getRating() {
-        return rating;
+    public int getRevenue() {
+        return revenue;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
+    public void setRevenue(int revenue) {
+        this.revenue = revenue;
     }
 
-    public Movie withRating(String rating) {
-        this.rating = rating;
-        return this;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public Movie withCategory(String category) {
-        this.category = category;
-        return this;
-    }
-
-    public String getShowCast() {
-        return showCast;
-    }
-
-    public void setShowCast(String showCast) {
-        this.showCast = showCast;
-    }
-
-    public Movie withShowCast(String showCast) {
-        this.showCast = showCast;
-        return this;
-    }
-
-    public String getDirector() {
-        return director;
-    }
-
-    public void setDirector(String director) {
-        this.director = director;
-    }
-
-    public Movie withDirector(String director) {
-        this.director = director;
-        return this;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public void setSummary(String summary) {
-        this.summary = summary;
-    }
-
-    public Movie withSummary(String summary) {
-        this.summary = summary;
-        return this;
-    }
-
-    public String getPoster() {
-        return poster;
-    }
-
-    public void setPoster(String poster) {
-        this.poster = poster;
-    }
-
-    public Movie withPoster(String poster) {
-        this.poster = poster;
-        return this;
-    }
-
-    public Integer getMediatype() {
-        return mediatype;
-    }
-
-    public void setMediatype(Integer mediatype) {
-        this.mediatype = mediatype;
-    }
-
-    public Movie withMediatype(Integer mediatype) {
-        this.mediatype = mediatype;
-        return this;
-    }
-
-    public String getRuntime() {
+    public int getRuntime() {
         return runtime;
     }
 
-    public void setRuntime(String runtime) {
+    public void setRuntime(int runtime) {
         this.runtime = runtime;
     }
 
-    public Movie withRuntime(String runtime) {
-        this.runtime = runtime;
-        return this;
+
+
+    public String getTitle() {
+        return title;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Movie movie = (Movie) o;
-        if (!unit.equals(movie.unit)) return false;
-        if (!showId.equals(movie.showId)) return false;
-        if (!showTitle.equals(movie.showTitle)) return false;
-        if (!releaseYear.equals(movie.releaseYear)) return false;
-        if (!rating.equals(movie.rating)) return false;
-        if (!category.equals(movie.category)) return false;
-        if (!showCast.equals(movie.showCast)) return false;
-        if (!director.equals(movie.director)) return false;
-        if (!summary.equals(movie.summary)) return false;
-        if (!poster.equals(movie.poster)) return false;
-        if (!mediatype.equals(movie.mediatype)) return false;
-        return runtime.equals(movie.runtime);
+    public void setTitle(String title) {
+        this.title = title;
     }
 
+    public double getVoteAverage() {
+        return voteAverage;
+    }
+
+    public void setVoteAverage(double voteAverage) {
+        this.voteAverage = voteAverage;
+    }
+
+    public int getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(int voteCount) {
+        this.voteCount = voteCount;
+    }
 
 }

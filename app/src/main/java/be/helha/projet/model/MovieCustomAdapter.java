@@ -1,6 +1,6 @@
 package be.helha.projet.model;
 
-import be.helha.projet.model.movie.*;
+
 
 import android.app.Activity;
 import android.content.Context;
@@ -62,8 +62,8 @@ public class MovieCustomAdapter extends RecyclerView.Adapter<MovieCustomAdapter.
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
         final Movie m = movies.get(position);
-        holder.tvTitle.setText(m.getShowTitle());
-        Picasso.with(context).load(m.getPoster()).into(holder.ivPoster);
+        //holder.tvTitle.setText(m.getShowTitle());
+        //Picasso.with(context).load(m.getPoster()).into(holder.ivPoster);
         holder.ivPoster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)

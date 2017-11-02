@@ -46,10 +46,10 @@ public class MovieDialogFragment extends DialogFragment
         View dialogView = inflater.inflate(R.layout.selected_movie_item, null);
         tv_title = dialogView.findViewById(R.id.tv_selected_movie_item_title);
         rb_rating = dialogView.findViewById(R.id.rb_selected_movie_item_rating);
-        rb_rating.setRating(Float.parseFloat(movie.getRating()));
-        iv_poster = dialogView.findViewById(R.id.iv_selected_movie_item_poster);
-        Picasso.with(getContext()).load(movie.getPoster()).into(iv_poster);
-        tv_title.setText(movie.getShowTitle());
+        //rb_rating.setRating(Float.parseFloat(movie.getRating()));
+        //iv_poster = dialogView.findViewById(R.id.iv_selected_movie_item_poster);
+        //Picasso.with(getContext()).load(movie.getPoster()).into(iv_poster);
+        //tv_title.setText(movie.getShowTitle());
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         /*builder.setMessage("Le message s'affiche bien")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {

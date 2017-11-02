@@ -1,22 +1,15 @@
 package be.helha.projet.task;
 
 import android.os.AsyncTask;
-import android.util.Log;
-
-import com.google.gson.Gson;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import be.helha.projet.model.Movie;
@@ -81,11 +74,6 @@ public class MovieAsyncTask extends AsyncTask<String,Void,List<Movie>>
                JSONArray json = new JSONArray(responseText);
                for(int i = 0;i<json.length();i++) {
                    Movie m = new Movie();
-                   m.setShowTitle(json.getJSONObject(i).getString("show_title"));
-                   m.setSummary(json.getJSONObject(i).getString("summary"));
-                   m.setPoster(json.getJSONObject(i).getString("poster").replaceFirst("http","https"));
-                   m.setRating(json.getJSONObject(i).getString("rating"));
-                   //m.set
                    movies.add(m);
                }
 

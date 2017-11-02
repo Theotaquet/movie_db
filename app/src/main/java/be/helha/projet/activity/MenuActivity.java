@@ -16,9 +16,10 @@ import android.widget.Spinner;
 import java.util.List;
 
 import be.helha.projet.R;
+import be.helha.projet.model.Movie;
 import be.helha.projet.model.TVSeries;
 import be.helha.projet.model.TVSeriesCustomAdapter;
-import be.helha.projet.model.Movie;
+import be.helha.projet.task.ActorAsyncTask;
 import be.helha.projet.task.MovieAsyncTask;
 import be.helha.projet.task.TVSeriesAsyncTask;
 
@@ -29,14 +30,16 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
     private RecyclerView rvMovieList;
     private RecyclerView rvTVSeriesList;
 
-    //private MovieAsyncTask movieAsyncTask;
-
+    private MovieAsyncTask movieAsyncTask;
     private TVSeriesAsyncTask tvSeriesAsyncTask;
+    private ActorAsyncTask actorAsyncTask;
+
 
     private final String TITLE = "title";
     private final String ACTOR = "actor";
     private final String DIRECTOR ="director";
     private ImageView ivSearch;
+    private ImageView ivConfirm;
     private EditText etSearch;
 
     @Override
@@ -49,7 +52,8 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
         ab.setCustomView(R.layout.action_bar);
         etSearch = (EditText)findViewById(R.id.et_action_bar);
         etSearch.setVisibility(View.INVISIBLE);
-        ivSearch = (ImageView)findViewById(R.id.iv_action_bar);
+        ivConfirm = (ImageView)findViewById(R.id.iv_confirm);
+        ivSearch = (ImageView)findViewById(R.id.iv_search);
         ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,7 +124,7 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
     }
 
     @Override
-    public void onPostExecuteTVSeriesAsyncTask(List<TVSeries> movies) {
+    public void onPostExecuteTVSeriesAsyncTask(List<TVSeries> tvSeries) {
         rvTVSeriesList.setAdapter(new TVSeriesCustomAdapter(this,tvSeriesAsyncTask.getTvSeries()));
     }
 }
