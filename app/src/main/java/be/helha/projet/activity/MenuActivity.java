@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -123,5 +125,25 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
     @Override
     public void onPostExecuteTVSeriesAsyncTask(List<TVSeries> tvSeries) {
         rvTVSeriesList.setAdapter(new TVSeriesCustomAdapter(this,tvSeriesAsyncTask.getTvSeries()));
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_edit:
+            /* DO EDIT */
+                return true;
+            case R.id.action_add:
+            /* DO ADD */
+                return true;
+            case R.id.action_delete:
+            /* DO DELETE */
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
