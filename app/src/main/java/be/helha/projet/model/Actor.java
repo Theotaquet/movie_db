@@ -9,6 +9,7 @@ public class Actor
     private String name;
     private String character;
 
+
     public Actor()
     {
 
