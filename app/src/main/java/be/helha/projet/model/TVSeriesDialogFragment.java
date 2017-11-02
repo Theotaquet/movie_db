@@ -3,36 +3,9 @@ package be.helha.projet.model;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AlertDialog;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
-
-import be.helha.projet.R;
-import android.os.Bundle;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AlertDialog;
-import android.util.FloatProperty;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-
-import android.widget.ImageView;
-import android.widget.RatingBar;
-import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
-
-import be.helha.projet.R;
-import be.helha.projet.activity.MenuActivity;
-import be.helha.projet.model.tvseries.TVSeries;
 
 public class TVSeriesDialogFragment extends DialogFragment
 {

@@ -3,10 +3,6 @@ package be.helha.projet.task;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.google.gson.Gson;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -16,11 +12,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import be.helha.projet.model.Movie;
-import be.helha.projet.model.tvseries.TVSeries;
+import be.helha.projet.model.TVSeries;
 
 
 public class TVSeriesAsyncTask extends AsyncTask<String,Void,List<TVSeries>>

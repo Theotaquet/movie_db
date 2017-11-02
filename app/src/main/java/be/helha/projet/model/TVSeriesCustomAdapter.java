@@ -1,13 +1,7 @@
 package be.helha.projet.model;
 
-import be.helha.projet.model.movie.*;
-
-import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +10,9 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import be.helha.projet.R;
-import be.helha.projet.activity.MenuActivity;
-import be.helha.projet.model.tvseries.TVSeries;
 
 
 public class TVSeriesCustomAdapter extends RecyclerView.Adapter<TVSeriesCustomAdapter.CustomViewHolder>

@@ -1,15 +1,12 @@
 package be.helha.projet.activity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,10 +16,9 @@ import android.widget.Spinner;
 import java.util.List;
 
 import be.helha.projet.R;
+import be.helha.projet.model.TVSeries;
 import be.helha.projet.model.TVSeriesCustomAdapter;
 import be.helha.projet.model.Movie;
-import be.helha.projet.model.TVSeriesCustomAdapter;
-import be.helha.projet.model.tvseries.TVSeries;
 import be.helha.projet.task.MovieAsyncTask;
 import be.helha.projet.task.TVSeriesAsyncTask;
 

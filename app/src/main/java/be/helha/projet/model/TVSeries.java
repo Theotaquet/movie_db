@@ -1,5 +1,5 @@
 
-package be.helha.projet.model.tvseries;
+package be.helha.projet.model;
 
 import android.util.Log;
 
