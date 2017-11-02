@@ -70,6 +70,7 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
 
 
                 }
+
                 else {
                     etSearch.setVisibility(View.INVISIBLE);
                 }
