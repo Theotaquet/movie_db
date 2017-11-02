@@ -25,6 +25,7 @@ public class Movie {
     private String release_date;
 
 
+
     private double voteAverage;
     private int voteCount;
 
