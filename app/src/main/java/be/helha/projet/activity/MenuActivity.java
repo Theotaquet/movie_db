@@ -164,7 +164,7 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
         {
             case R.id.menu_movie:
                 movieAsyncTask = new MovieAsyncTask(MenuActivity.this);
-                tvSeriesAsyncTask.execute(etSearch.getText().toString());
+                movieAsyncTask.execute(etSearch.getText().toString());
                 break;
 
             case R.id.menu_tvseries:
