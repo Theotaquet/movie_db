@@ -42,11 +42,10 @@ public class TVSeriesAsyncTask extends AsyncTask<String,Void,List<TVSeries>>
     @Override
     protected List<TVSeries> doInBackground(String... strings)
     {
-        String category = strings[0];
-        String query = strings[1];
+        String query = strings[0];
         try {
             query.replace(" ", "%20");
-            String address = "https://api.themoviedb.org/3/search/" + category + "?api_key=cc4b67c52acb514bdf4931f7cedfd12b&query=" + query;
+            String address = "https://api.themoviedb.org/3/search/tv?api_key=cc4b67c52acb514bdf4931f7cedfd12b&query=" + query;
             String responseText = makeRequest(address);
             Log.i("response", responseText);
             JSONObject jsonObject = new JSONObject(responseText);

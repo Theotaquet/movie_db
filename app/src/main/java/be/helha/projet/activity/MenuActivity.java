@@ -20,6 +20,7 @@ import java.util.List;
 import be.helha.projet.R;
 import be.helha.projet.model.Actor;
 import be.helha.projet.model.Movie;
+import be.helha.projet.model.MovieCustomAdapter;
 import be.helha.projet.model.TVSeries;
 import be.helha.projet.model.TVSeriesCustomAdapter;
 import be.helha.projet.task.ActorAsyncTask;
@@ -29,7 +30,6 @@ import be.helha.projet.task.TVSeriesAsyncTask;
 public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Listener, TVSeriesAsyncTask.Listener, ActorAsyncTask.Listener{
 
     private Button btnTitle;
-    private Spinner spinCategory;
     private RecyclerView rvMovieList;
     private RecyclerView rvTVSeriesList;
 
@@ -57,6 +57,14 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
         etSearch = (EditText)findViewById(R.id.et_action_bar);
         etSearch.setVisibility(View.INVISIBLE);
         ivConfirm = (ImageView)findViewById(R.id.iv_confirm);
+        ivConfirm.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v)
+            {
+                launchAsyncTask();
+            }
+        });
         ivSearch = (ImageView)findViewById(R.id.iv_search);
         ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,15 +95,6 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
 
         etSearch = (EditText)findViewById(R.id.et_action_bar);
 
-        btnTitle = (Button)findViewById(R.id.btn_title);
-        btnTitle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i("test","test");
-                tvSeriesAsyncTask = new TVSeriesAsyncTask(MenuActivity.this);
-                tvSeriesAsyncTask.execute("tv",etSearch.getText().toString());
-            }
-        });
 
 
     }
@@ -122,7 +121,7 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
     @Override
     public void onPostExecuteMovieAsyncTask(List<Movie> movies)
     {
-
+        rvMovieList.setAdapter(new MovieCustomAdapter(this,movieAsyncTask.getMovies()));
 
     }
 
@@ -160,19 +159,19 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
 
     public void launchAsyncTask()
     {
-        switch(item.getItemId())
+        switch(category)
         {
-            case R.id.menu_movie:
+            case "movie":
                 movieAsyncTask = new MovieAsyncTask(MenuActivity.this);
                 movieAsyncTask.execute(etSearch.getText().toString());
                 break;
 
-            case R.id.menu_tvseries:
+            case "tvseries":
                 tvSeriesAsyncTask = new TVSeriesAsyncTask(MenuActivity.this);
                 tvSeriesAsyncTask.execute(etSearch.getText().toString());
                 break;
 
-            case R.id.menu_actor:
+            case "actor":
                 actorAsyncTask = new ActorAsyncTask(MenuActivity.this);
                 actorAsyncTask.execute(etSearch.getText().toString());
                 break;

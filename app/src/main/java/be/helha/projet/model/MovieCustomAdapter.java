@@ -62,15 +62,15 @@ public class MovieCustomAdapter extends RecyclerView.Adapter<MovieCustomAdapter.
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
         final Movie m = movies.get(position);
-        //holder.tvTitle.setText(m.getShowTitle());
-        //Picasso.with(context).load(m.getPoster()).into(holder.ivPoster);
+        holder.tvTitle.setText(m.getTitle());
+        Picasso.with(context).load(m.getPosterPath()).into(holder.ivPoster);
         holder.ivPoster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
-                MovieDialogFragment movieDialogFragment = new MovieDialogFragment();
-                movieDialogFragment.setMovie(m);
-                movieDialogFragment.show(((FragmentActivity)context).getSupportFragmentManager(),"tag");
+                //MovieDialogFragment movieDialogFragment = new MovieDialogFragment();
+               // movieDialogFragment.setMovie(m);
+                //movieDialogFragment.show(((FragmentActivity)context).getSupportFragmentManager(),"tag");
 
 
             }

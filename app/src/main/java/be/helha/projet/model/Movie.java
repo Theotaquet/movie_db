@@ -1,6 +1,9 @@
 
 package be.helha.projet.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,9 +12,6 @@ import be.helha.projet.model.Actor;
 
 public class Movie {
 
-
-
-    private String backdropPath;
     private List<String> genres;
     private int id;
     private String posterPath;
@@ -21,7 +21,7 @@ public class Movie {
     private String overview;
     private String title;
     private List<Actor> actors;
-    private String release_date;
+
 
 
 
@@ -33,17 +33,9 @@ public class Movie {
      * 
      */
     public Movie() {
+        genres = new ArrayList<String>();
+
     }
-
-
-    public String getBackdropPath() {
-        return backdropPath;
-    }
-
-    public void setBackdropPath(String backdropPath) {
-        this.backdropPath = backdropPath;
-    }
-
 
     public List<String> getGenres() {
         return genres;
@@ -125,6 +117,49 @@ public class Movie {
 
     public void setVoteCount(int voteCount) {
         this.voteCount = voteCount;
+    }
+
+    public void createMovie(String json)
+    {
+        try {
+            JSONObject obj = new JSONObject(json);
+            /*for(int i = 0;i<obj.getJSONArray("genres").length();i++)
+            {
+                genres.add((String)obj.getJSONArray("genres").getJSONObject(i).get("name"));
+            }*/
+            setId((int)obj.get("id"));
+            try {
+                if (((String) obj.get("poster_path")).equals("null")) {
+
+                    setPosterPath("https://www.boris-oliviero.com/pics/films/default.jpg");
+                }
+                else
+                {
+                    setPosterPath("http://image.tmdb.org/t/p/w500" + (String) obj.get("poster_path"));
+                }
+            }
+            catch(Exception e)
+            {
+                setPosterPath("https://www.boris-oliviero.com/pics/films/default.jpg");
+            }
+            try
+            {
+                setTitle((String)obj.get("title"));
+            }
+            catch (Exception e)
+            {
+
+            }
+
+
+
+
+
+        }
+        catch(JSONException e)
+        {
+
+        }
     }
 
 }

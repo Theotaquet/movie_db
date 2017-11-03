@@ -14,14 +14,13 @@ import java.util.List;
 
 import be.helha.projet.R;
 
-public class ActorCustomAdapter extends RecyclerView.Adapter<TVSeriesCustomAdapter.CustomViewHolder>
+public class ActorCustomAdapter extends RecyclerView.Adapter<ActorCustomAdapter.CustomViewHolder>
 {
     private Context context;
     public static List<Actor> actors;
 
     public static class CustomViewHolder extends RecyclerView.ViewHolder
     {
-        private TextView tvFirstName;
         private TextView tvName;
         private ImageView ivPoster;
 
@@ -44,29 +43,29 @@ public class ActorCustomAdapter extends RecyclerView.Adapter<TVSeriesCustomAdapt
 
 
     @Override
-    public TVSeriesCustomAdapter.CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(context).inflate(R.layout.tvseries_item,parent,false);
-        return new TVSeriesCustomAdapter.CustomViewHolder(v);
+        View v = LayoutInflater.from(context).inflate(R.layout.actor_item,parent,false);
+        return new ActorCustomAdapter.CustomViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(TVSeriesCustomAdapter.CustomViewHolder holder, int position) {
+    public void onBindViewHolder(CustomViewHolder holder, int position) {
         final Actor actor = actors.get(position);
-        //holder.tvTitle.setText(tv.getName());
-        //Picasso.with(context).load(tv.getPosterPath()).into(holder.ivPoster);
+        holder.tvName.setText(actor.getName());
+        Picasso.with(context).load(actor.getProfilePath()).into(holder.ivPoster);
 
         //holder.ivPoster.setOnClickListener(new View.OnClickListener() {
-            //@Override
-            //public void onClick(View view)
-            //{
-                //TVSeriesDialogFragment tvSeriesDialogFragment = new TVSeriesDialogFragment();
-                //tvSeriesDialogFragment.setTv(tv);
-                //movieDialogFragment.show(((FragmentActivity)context).getSupportFragmentManager(),"tag");
+        //@Override
+        //public void onClick(View view)
+        //{
+        //TVSeriesDialogFragment tvSeriesDialogFragment = new TVSeriesDialogFragment();
+        //tvSeriesDialogFragment.setTv(tv);
+        //movieDialogFragment.show(((FragmentActivity)context).getSupportFragmentManager(),"tag");
 
 
-           // }
-       // });
+        // }
+        // });
 
     }
 
