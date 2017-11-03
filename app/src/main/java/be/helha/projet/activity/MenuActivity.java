@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import java.util.List;
 
 import be.helha.projet.R;
+import be.helha.projet.model.Actor;
 import be.helha.projet.model.Movie;
 import be.helha.projet.model.TVSeries;
 import be.helha.projet.model.TVSeriesCustomAdapter;
@@ -25,7 +26,7 @@ import be.helha.projet.task.ActorAsyncTask;
 import be.helha.projet.task.MovieAsyncTask;
 import be.helha.projet.task.TVSeriesAsyncTask;
 
-public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Listener, TVSeriesAsyncTask.Listener{
+public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Listener, TVSeriesAsyncTask.Listener, ActorAsyncTask.Listener{
 
     private Button btnTitle;
     private Spinner spinCategory;
@@ -108,9 +109,20 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
     }
 
     @Override
+    public void onPreExecuteActorAsyncTask() {
+
+    }
+
+    @Override
+    public void onPostExecuteActorAsyncTask(List<Actor> actors) {
+        //test
+
+    }
+
+    @Override
     public void onPostExecuteMovieAsyncTask(List<Movie> movies)
     {
-        //rvMovieList.setAdapter(new CustomAdapter(this,movieAsyncTask.movies));
+
 
     }
 

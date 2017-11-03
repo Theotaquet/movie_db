@@ -19,8 +19,8 @@ public class ActorAsyncTask extends AsyncTask<String,Void,List<Actor>>
 {
     public interface Listener
     {
-        void onPreExecuteMovieAsyncTask();
-        void onPostExecuteMovieAsyncTask(List<Actor> actors);
+        void onPreExecuteActorAsyncTask();
+        void onPostExecuteActorAsyncTask(List<Actor> actors);
     }
 
     private Listener listener;
@@ -34,7 +34,7 @@ public class ActorAsyncTask extends AsyncTask<String,Void,List<Actor>>
     @Override
     protected void onPreExecute()
     {
-        listener.onPreExecuteMovieAsyncTask();
+        listener.onPreExecuteActorAsyncTask();
     }
 
     @Override
@@ -94,7 +94,7 @@ public class ActorAsyncTask extends AsyncTask<String,Void,List<Actor>>
 
     @Override
     protected void onPostExecute(List<Actor> actors) {
-        listener.onPostExecuteMovieAsyncTask(actors);
+        listener.onPostExecuteActorAsyncTask(actors);
     }
 
 
