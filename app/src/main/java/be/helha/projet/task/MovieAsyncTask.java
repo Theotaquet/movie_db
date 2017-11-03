@@ -40,13 +40,12 @@ public class MovieAsyncTask extends AsyncTask<String,Void,List<Movie>>
     @Override
     protected List<Movie> doInBackground(String... strings)
     {
-        String category = strings[0];
-        String research = strings[1];
+        String research = strings[0];
         try
         {
             research.replace(" ","%20");
             //
-            String address = "https://api.themoviedb.org/3/search/"+category+"?api_key=cc4b67c52acb514bdf4931f7cedfd12b&query=the%20simpsons";
+            String address = "https://api.themoviedb.org/3/search/movie?api_key=cc4b67c52acb514bdf4931f7cedfd12b&query="+research;
             URL url = new URL(address);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");

@@ -1,12 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/action_edit"
-        android:title="Edit"
+    <item android:id="@+id/menu_movie"
+        android:title="Film"
         android:showAsAction="always"></item>
-    <item android:id="@+id/action_add"
-
-        android:title="ifRoom"
+    <item android:id="@+id/menu_tvseries"
+        android:title="Série"
         android:showAsAction="ifRoom"></item>
-    <item android:id="@+id/action_delete"
-        android:title="Delete"
+
+    <item android:id="@+id/menu_actor"
+        android:title="Acteur"
         android:showAsAction="never"></item>
+
 </menu>

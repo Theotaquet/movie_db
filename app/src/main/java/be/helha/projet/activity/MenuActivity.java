@@ -36,19 +36,20 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
     private TVSeriesAsyncTask tvSeriesAsyncTask;
     private ActorAsyncTask actorAsyncTask;
 
-
-    private final String TITLE = "title";
-    private final String ACTOR = "actor";
-    private final String DIRECTOR ="director";
+    private String category;
     private ImageView ivSearch;
     private ImageView ivConfirm;
     private EditText etSearch;
+
+    private Menu menu;
+    private MenuItem item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        category = "movie";
         ActionBar ab = getSupportActionBar();
         ab.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         ab.setCustomView(R.layout.action_bar);
@@ -85,10 +86,6 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
 
         etSearch = (EditText)findViewById(R.id.et_action_bar);
 
-        spinCategory = (Spinner)findViewById(R.id.spin_type);
-        String[] items = new String[]{TITLE,ACTOR,DIRECTOR};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        spinCategory.setAdapter(adapter);
         btnTitle = (Button)findViewById(R.id.btn_title);
         btnTitle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,21 +126,44 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
+        this.menu = menu;
         return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
+        this.item = item;
         switch (item.getItemId()) {
-            case R.id.action_edit:
-            /* DO EDIT */
+            case R.id.menu_movie:
+                category = "movie";
                 return true;
-            case R.id.action_add:
-            /* DO ADD */
+            case R.id.menu_tvseries:
+                category = "tvseries";
                 return true;
-            case R.id.action_delete:
-            /* DO DELETE */
+            case R.id.menu_actor:
+                category = "actor";
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void launchAsyncTask()
+    {
+        switch(item.getItemId())
+        {
+            case R.id.menu_movie:
+                movieAsyncTask = new MovieAsyncTask(MenuActivity.this);
+                tvSeriesAsyncTask.execute(etSearch.getText().toString());
+                break;
+
+            case R.id.menu_tvseries:
+                tvSeriesAsyncTask = new TVSeriesAsyncTask(MenuActivity.this);
+                tvSeriesAsyncTask.execute(etSearch.getText().toString());
+                break;
+
+            case R.id.menu_actor:
+                actorAsyncTask = new ActorAsyncTask(MenuActivity.this);
+                actorAsyncTask.execute(etSearch.getText().toString());
+                break;
+        }
     }
 }

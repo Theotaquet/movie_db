@@ -14,10 +14,6 @@ import java.util.List;
 
 import be.helha.projet.R;
 
-/**
- * Created by Clement on 02-11-17.
- */
-
 public class ActorCustomAdapter extends RecyclerView.Adapter<TVSeriesCustomAdapter.CustomViewHolder>
 {
     private Context context;
