@@ -70,10 +70,10 @@ public class ActorAsyncTask extends AsyncTask<String,Void,List<Actor>>
 
                 for(int j = 0; j < knownFor.length(); j++)
                 {
-                    if(knownFor.getJSONObject(j).get("media_type").equals("movie"))
+                    if(knownFor.getJSONObject(j).get("media_type").equals("tv"))
                     {
                         id = (int)knownFor.getJSONObject(j).get("id");
-                        address = "https://api.themoviedb.org/3/movie/"+id+"?api_key=cc4b67c52acb514bdf4931f7cedfd12b";
+                        address = "https://api.themoviedb.org/3/tv/"+id+"?api_key=cc4b67c52acb514bdf4931f7cedfd12b";
                         makeRequest(address);
                         TVSeries tv = new TVSeries();
                         tv.createTVSeries(makeRequest(address));
@@ -82,7 +82,7 @@ public class ActorAsyncTask extends AsyncTask<String,Void,List<Actor>>
                     else
                     {
                         id = (int)knownFor.getJSONObject(j).get("id");
-                        address = "https://api.themoviedb.org/3/tv/"+id+"?api_key=cc4b67c52acb514bdf4931f7cedfd12b";
+                        address = "https://api.themoviedb.org/3/movie/"+id+"?api_key=cc4b67c52acb514bdf4931f7cedfd12b";
                         Movie m = new Movie();
                         m.createMovie(makeRequest(address));
                         actor.addMovie(m);

@@ -3,6 +3,7 @@ package be.helha.projet.model;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -62,7 +63,12 @@ public class ActorCustomAdapter extends RecyclerView.Adapter<ActorCustomAdapter.
             {
 
                 MovieCustomAdapter movieCustomAdapter = new MovieCustomAdapter(context,actor.getMovies());
+                ((MenuActivity)context).getRvMovieList().setAdapter(movieCustomAdapter);
+
+                //((MenuActivity)context).getRvMovieList().setAdapter(null);
+
                 TVSeriesCustomAdapter TVSeriesCustomAdapter = new TVSeriesCustomAdapter(context,actor.getTVSeries());
+                ((MenuActivity)context).getRvTVSeriesList().setAdapter(TVSeriesCustomAdapter);
 
 
             }

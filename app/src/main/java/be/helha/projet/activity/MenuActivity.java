@@ -63,6 +63,9 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
             @Override
             public void onClick(View v)
             {
+                rvActorList.setAdapter(null);
+                rvTVSeriesList.setAdapter(null);
+                rvMovieList.setAdapter(null);
                 launchAsyncTask();
             }
         });
@@ -102,6 +105,21 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
 
 
 
+    }
+
+    public RecyclerView getRvMovieList()
+    {
+        return rvMovieList;
+    }
+
+    public RecyclerView getRvTVSeriesList()
+    {
+        return rvTVSeriesList;
+    }
+
+    public RecyclerView getRvActorList()
+    {
+        return rvActorList;
     }
 
 
