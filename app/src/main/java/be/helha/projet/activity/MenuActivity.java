@@ -19,6 +19,7 @@ import java.util.List;
 
 import be.helha.projet.R;
 import be.helha.projet.model.Actor;
+import be.helha.projet.model.ActorCustomAdapter;
 import be.helha.projet.model.Movie;
 import be.helha.projet.model.MovieCustomAdapter;
 import be.helha.projet.model.TVSeries;
@@ -29,9 +30,9 @@ import be.helha.projet.task.TVSeriesAsyncTask;
 
 public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Listener, TVSeriesAsyncTask.Listener, ActorAsyncTask.Listener{
 
-    private Button btnTitle;
     private RecyclerView rvMovieList;
     private RecyclerView rvTVSeriesList;
+    private RecyclerView rvActorList;
 
     private MovieAsyncTask movieAsyncTask;
     private TVSeriesAsyncTask tvSeriesAsyncTask;
@@ -89,6 +90,10 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
         rvMovieList.setHasFixedSize(true);
         rvMovieList.setLayoutManager(new LinearLayoutManager(MenuActivity.this));
 
+        rvActorList = (RecyclerView) findViewById(R.id.rv_main_listActor);
+        rvActorList.setHasFixedSize(true);
+        rvActorList.setLayoutManager(new LinearLayoutManager(MenuActivity.this));
+
         rvTVSeriesList = (RecyclerView) findViewById(R.id.rv_main_listTVSeries);
         rvTVSeriesList.setHasFixedSize(true);
         rvTVSeriesList.setLayoutManager(new LinearLayoutManager(MenuActivity.this));
@@ -114,7 +119,7 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
 
     @Override
     public void onPostExecuteActorAsyncTask(List<Actor> actors) {
-        //test
+        rvActorList.setAdapter(new ActorCustomAdapter(this,actorAsyncTask.getActors()));
 
     }
 

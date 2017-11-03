@@ -17,6 +17,7 @@ import java.util.List;
 
 import be.helha.projet.model.Actor;
 import be.helha.projet.model.Movie;
+import be.helha.projet.model.TVSeries;
 
 
 public class ActorAsyncTask extends AsyncTask<String,Void,List<Actor>>
@@ -28,7 +29,12 @@ public class ActorAsyncTask extends AsyncTask<String,Void,List<Actor>>
     }
 
     private Listener listener;
-    public List<Actor> actors;
+    private List<Actor> actors;
+
+    public List<Actor> getActors()
+    {
+        return actors;
+    }
 
     public ActorAsyncTask(Listener listener)
     {
@@ -48,17 +54,42 @@ public class ActorAsyncTask extends AsyncTask<String,Void,List<Actor>>
         try
         {
             query.replace(" ", "%20");
-            String address = "https://api.themoviedb.org/3/search/movie?api_key=cc4b67c52acb514bdf4931f7cedfd12b&query="+query;
+            String address = "https://api.themoviedb.org/3/search/person?api_key=cc4b67c52acb514bdf4931f7cedfd12b&query="+query;
             String responseText = makeRequest(address);
             //Log.i("response", responseText);
             JSONObject jsonObject = new JSONObject(responseText);
             //Log.i("length",jsonObject.getJSONArray("results").length()+"");
             JSONArray results = jsonObject.getJSONArray("results");
+            int id;
             for (int i = 0; i < results.length(); i++)
             {
                 Actor actor = new Actor();
 
                 actor.createActor(results.getJSONObject(i).toString());
+                JSONArray knownFor = results.getJSONObject(i).getJSONArray("known_for");
+
+                for(int j = 0; j < knownFor.length(); j++)
+                {
+                    if(knownFor.getJSONObject(j).get("media_type").equals("movie"))
+                    {
+                        id = (int)knownFor.getJSONObject(j).get("id");
+                        address = "https://api.themoviedb.org/3/movie/"+id+"?api_key=cc4b67c52acb514bdf4931f7cedfd12b";
+                        makeRequest(address);
+                        TVSeries tv = new TVSeries();
+                        tv.createTVSeries(makeRequest(address));
+                        actor.addTVSeries(tv);
+                    }
+                    else
+                    {
+                        id = (int)knownFor.getJSONObject(j).get("id");
+                        address = "https://api.themoviedb.org/3/tv/"+id+"?api_key=cc4b67c52acb514bdf4931f7cedfd12b";
+                        Movie m = new Movie();
+                        m.createMovie(makeRequest(address));
+                        actor.addMovie(m);
+                    }
+
+                }
+                Log.i("",results.getJSONObject(i).toString());
                 this.actors.add(actor);
             }
         }

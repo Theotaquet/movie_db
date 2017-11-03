@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import be.helha.projet.R;
+import be.helha.projet.activity.MenuActivity;
 
 public class ActorCustomAdapter extends RecyclerView.Adapter<ActorCustomAdapter.CustomViewHolder>
 {
@@ -27,8 +28,8 @@ public class ActorCustomAdapter extends RecyclerView.Adapter<ActorCustomAdapter.
 
         public CustomViewHolder(View itemView) {
             super(itemView);
-            //tvTitle = itemView.findViewById(R.id.tv_tvSeries_item_title);
-            ivPoster = itemView.findViewById(R.id.iv_tvSeries_item_image);
+            tvName = itemView.findViewById(R.id.tv_actor_name);
+            ivPoster = itemView.findViewById(R.id.iv_actor_image);
 
 
         }
@@ -54,18 +55,18 @@ public class ActorCustomAdapter extends RecyclerView.Adapter<ActorCustomAdapter.
         final Actor actor = actors.get(position);
         holder.tvName.setText(actor.getName());
         Picasso.with(context).load(actor.getProfilePath()).into(holder.ivPoster);
+        holder.ivPoster.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
 
-        //holder.ivPoster.setOnClickListener(new View.OnClickListener() {
-        //@Override
-        //public void onClick(View view)
-        //{
-        //TVSeriesDialogFragment tvSeriesDialogFragment = new TVSeriesDialogFragment();
-        //tvSeriesDialogFragment.setTv(tv);
-        //movieDialogFragment.show(((FragmentActivity)context).getSupportFragmentManager(),"tag");
+                MovieCustomAdapter movieCustomAdapter = new MovieCustomAdapter(context,actor.getMovies());
+                TVSeriesCustomAdapter TVSeriesCustomAdapter = new TVSeriesCustomAdapter(context,actor.getTVSeries());
 
 
-        // }
-        // });
+            }
+        });
 
     }
 

@@ -3,6 +3,9 @@ package be.helha.projet.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Clement on 19-10-17.
  */
@@ -13,16 +16,40 @@ public class Actor
     private String character;
     private String profilePath;
     private int id;
+    private List<Movie> movies;
+    private List<TVSeries> tvSeries;
+
 
 
     public Actor()
     {
-
+        movies = new ArrayList<Movie>();
+        tvSeries = new ArrayList<TVSeries>();
     }
 
     public Actor(String name, String character) {
         this.name = name;
         this.character = character;
+    }
+
+    public boolean addMovie(Movie m)
+    {
+        return movies.add(m);
+    }
+
+    public boolean addTVSeries(TVSeries tv)
+    {
+        return tvSeries.add(tv);
+    }
+
+    public List<Movie> getMovies()
+    {
+        return movies;
+    }
+
+    public List<TVSeries> getTVSeries()
+    {
+        return tvSeries;
     }
 
 
@@ -65,7 +92,7 @@ public class Actor
             JSONObject obj = new JSONObject(json);
             setId((int)obj.get("id"));
             try {
-                if (((String) obj.get("poster_path")).equals("null")) {
+                if (((String) obj.get("profile_path")).equals("null")) {
 
                     setProfilePath("https://www.boris-oliviero.com/pics/films/default.jpg");
                 }
