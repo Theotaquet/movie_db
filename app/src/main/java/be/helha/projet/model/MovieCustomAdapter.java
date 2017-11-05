@@ -68,9 +68,9 @@ public class MovieCustomAdapter extends RecyclerView.Adapter<MovieCustomAdapter.
             @Override
             public void onClick(View view)
             {
-                //MovieDialogFragment movieDialogFragment = new MovieDialogFragment();
-               // movieDialogFragment.setMovie(m);
-                //movieDialogFragment.show(((FragmentActivity)context).getSupportFragmentManager(),"tag");
+                MovieDialogFragment movieDialogFragment = new MovieDialogFragment();
+                movieDialogFragment.setMovie(m);
+                movieDialogFragment.show(((FragmentActivity)context).getSupportFragmentManager(),"tag");
 
 
             }

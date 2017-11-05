@@ -61,14 +61,13 @@ public class ActorCustomAdapter extends RecyclerView.Adapter<ActorCustomAdapter.
             @Override
             public void onClick(View view)
             {
-
                 MovieCustomAdapter movieCustomAdapter = new MovieCustomAdapter(context,actor.getMovies());
                 ((MenuActivity)context).getRvMovieList().setAdapter(movieCustomAdapter);
 
-                //((MenuActivity)context).getRvMovieList().setAdapter(null);
-
                 TVSeriesCustomAdapter TVSeriesCustomAdapter = new TVSeriesCustomAdapter(context,actor.getTVSeries());
                 ((MenuActivity)context).getRvTVSeriesList().setAdapter(TVSeriesCustomAdapter);
+
+                ((MenuActivity)context).getRvActorList().setAdapter(null);
 
 
             }

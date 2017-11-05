@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -23,12 +24,13 @@ public class MovieDialogFragment extends DialogFragment
 {
     private Movie movie;
 
-    private TextView tv_title;
-    private RatingBar rb_rating;
+    private TextView tvTitle;
+    private RatingBar RbRating;
     private ImageView iv_poster;
-    private TextView tv_summury;
-    private TextView tv_director;
-    private TextView tv_releaseYear;
+    private WebView wbSummury;
+    private TextView tvGenres;
+    private TextView tvDirector;
+    private TextView tvReleaseDate;
 
     /*->titre
 ->affiche
@@ -44,15 +46,36 @@ public class MovieDialogFragment extends DialogFragment
         // Use the Builder class for convenient dialog construction
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         View dialogView = inflater.inflate(R.layout.selected_movie_item, null);
-        tv_title = dialogView.findViewById(R.id.tv_selected_movie_item_title);
-        rb_rating = dialogView.findViewById(R.id.rb_selected_movie_item_rating);
-        //rb_rating.setRating(Float.parseFloat(movie.getRating()));
-        //iv_poster = dialogView.findViewById(R.id.iv_selected_movie_item_poster);
-        //Picasso.with(getContext()).load(movie.getPoster()).into(iv_poster);
-        //tv_title.setText(movie.getShowTitle());
+
+        tvTitle = dialogView.findViewById(R.id.tv_selected_movie_item_title);
+        tvTitle.setText(movie.getTitle());
+
+        RbRating = dialogView.findViewById(R.id.rb_selected_movie_item_rating);
+        RbRating.setRating((float)(movie.getVoteAverage()));
+
+        iv_poster = dialogView.findViewById(R.id.iv_selected_movie_item_poster);
+        Picasso.with(getContext()).load(movie.getPosterPath()).into(iv_poster);
+
+        wbSummury = dialogView.findViewById(R.id.tv_selected_movie_item_overview);
+        String text;
+        text = "<html><body><p align=\"justify\">";
+        text+= movie.getOverview();
+        text+= "</p></body></html>";
+        wbSummury.loadData(text, "text/html", "utf-8");
+
+        tvGenres = dialogView.findViewById(R.id.tv_selected_movie_item_genre);
+        String text2 = "Genres : ";
+        for(String s : movie.getGenres())
+        {
+            text2 += (s+" ");
+        }
+        tvGenres.setText(text2);
+
+        tvReleaseDate = dialogView.findViewById(R.id.tv_selected_movie_item_releaseDate);
+
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        /*builder.setMessage("Le message s'affiche bien")
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // FIRE ZE MISSILES!
                     }
@@ -61,7 +84,7 @@ public class MovieDialogFragment extends DialogFragment
                     public void onClick(DialogInterface dialog, int id) {
                         // User cancelled the dialog
                     }
-                });*/
+                });
         // Create the AlertDialog object and return it
         builder.setView(dialogView);
         return builder.create();

@@ -1,6 +1,8 @@
 
 package be.helha.projet.model;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -14,19 +16,15 @@ public class Movie {
 
     private List<String> genres;
     private int id;
-    private String posterPath;
+    private String posterPath; //Ok
     private String releaseDate;
     private int revenue;
     private int runtime;
     private String overview;
     private String title;
     private List<Actor> actors;
-
-
-
-
     private double voteAverage;
-    private int voteCount;
+
 
     /**
      * No args constructor for use in serialization
@@ -111,22 +109,15 @@ public class Movie {
         this.voteAverage = voteAverage;
     }
 
-    public int getVoteCount() {
-        return voteCount;
-    }
-
-    public void setVoteCount(int voteCount) {
-        this.voteCount = voteCount;
-    }
 
     public void createMovie(String json)
     {
         try {
             JSONObject obj = new JSONObject(json);
-            /*for(int i = 0;i<obj.getJSONArray("genres").length();i++)
+            for(int i = 0;i<obj.getJSONArray("genres").length();i++)
             {
                 genres.add((String)obj.getJSONArray("genres").getJSONObject(i).get("name"));
-            }*/
+            }
             setId((int)obj.get("id"));
             try {
                 if (((String) obj.get("poster_path")).equals("null")) {
@@ -150,6 +141,32 @@ public class Movie {
             {
 
             }
+            try
+            {
+                setOverview((String)obj.get("overview"));
+            }
+            catch (Exception e)
+            {
+
+            }
+            try
+            {
+                setVoteAverage((Double)obj.get("vote_average")/2);
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
+            try
+            {
+                setReleaseDate((String)obj.get("release_date"));
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
 
 
 

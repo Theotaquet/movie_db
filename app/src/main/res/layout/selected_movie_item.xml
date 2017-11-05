@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center|left"
     android:scrollbars="vertical">
 
     <TextView
@@ -18,8 +24,25 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
+    <RatingBar
+        android:id="@+id/rb_selected_movie_item_rating"
+        android:layout_width="wrap_content"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:stepSize="0.1"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:progressTint="@color/star" />
+
     <TextView
-        android:id="@+id/et_selected_movie_item_releaseYear"
+        android:id="@+id/tv_selected_movie_item_genre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+
+    <TextView
+        android:id="@+id/tv_selected_movie_item_releaseDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
@@ -36,22 +59,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
-    <TextView
-        android:id="@+id/tv_selected_movie_item_summary"
+    <WebView
+        android:id="@+id/tv_selected_movie_item_overview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
-    <RatingBar
-        android:id="@+id/rb_selected_movie_item_rating"
-        android:layout_width="wrap_content"
-        android:scaleX="0.5"
-        android:scaleY="0.5"
-        android:stepSize="0.1"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:progressTint="@color/star" />
+
 
 
 
 </LinearLayout>
+</ScrollView>

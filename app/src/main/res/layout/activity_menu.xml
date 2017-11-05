@@ -22,7 +22,7 @@
         android:id="@+id/rv_main_listMovie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none" />
+        android:overScrollMode="never"/>
 
     <TextView
         android:id="@+id/tv_tvSeries_title"
@@ -34,7 +34,7 @@
             android:id="@+id/rv_main_listTVSeries"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none"/>
+            android:overScrollMode="never"/>
 
         <TextView
         android:id="@+id/tv_actor_title"
@@ -44,7 +44,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_main_listActor"
-        android:scrollbars="none"
+        android:overScrollMode="never"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

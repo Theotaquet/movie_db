@@ -60,7 +60,7 @@ public class MovieAsyncTask extends AsyncTask<String,Void,List<Movie>>
                 //Log.i("id",id+"");
                 address = "https://api.themoviedb.org/3/movie/"+id+"?api_key=cc4b67c52acb514bdf4931f7cedfd12b";
                 responseText = makeRequest(address);
-                Log.i("",id+" "+responseText);
+                //Log.i("",id+" "+responseText);
 
 
                 movie.createMovie(responseText);
