@@ -72,6 +72,7 @@ public class MovieDialogFragment extends DialogFragment
         tvGenres.setText(text2);
 
         tvReleaseDate = dialogView.findViewById(R.id.tv_selected_movie_item_releaseDate);
+        tvReleaseDate.setText(movie.getReleaseDate());
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());

@@ -16,7 +16,7 @@ public class Movie {
 
     private List<String> genres;
     private int id;
-    private String posterPath; //Ok
+    private String posterPath;
     private String releaseDate;
     private int revenue;
     private int runtime;
@@ -24,6 +24,7 @@ public class Movie {
     private String title;
     private List<Actor> actors;
     private double voteAverage;
+    private String director;
 
 
     /**
