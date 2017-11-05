@@ -17,6 +17,13 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import be.helha.projet.R;
 import be.helha.projet.activity.MenuActivity;
 
@@ -27,10 +34,9 @@ public class MovieDialogFragment extends DialogFragment
     private TextView tvTitle;
     private RatingBar RbRating;
     private ImageView iv_poster;
-    private WebView wbSummury;
-    private TextView tvGenres;
+    private WebView wbDetails;
     private TextView tvDirector;
-    private TextView tvReleaseDate;
+
 
     /*->titre
 ->affiche
@@ -47,6 +53,9 @@ public class MovieDialogFragment extends DialogFragment
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         View dialogView = inflater.inflate(R.layout.selected_movie_item, null);
 
+
+
+
         tvTitle = dialogView.findViewById(R.id.tv_selected_movie_item_title);
         tvTitle.setText(movie.getTitle());
 
@@ -56,40 +65,44 @@ public class MovieDialogFragment extends DialogFragment
         iv_poster = dialogView.findViewById(R.id.iv_selected_movie_item_poster);
         Picasso.with(getContext()).load(movie.getPosterPath()).into(iv_poster);
 
-        wbSummury = dialogView.findViewById(R.id.tv_selected_movie_item_overview);
+        wbDetails = dialogView.findViewById(R.id.tv_selected_movie_item_overview);
         String text;
-        text = "<html><body><p align=\"justify\">";
-        text+= movie.getOverview();
-        text+= "</p></body></html>";
-        wbSummury.loadData(text, "text/html", "utf-8");
-
-        tvGenres = dialogView.findViewById(R.id.tv_selected_movie_item_genre);
-        String text2 = "Genres : ";
+        String actors = "<table border=\"1\">";
+        for(Actor a : movie.getActors())
+        {
+            actors += ("<tr><td>"+a.getName()+"</td><td>"+a.getCharacter()+"</td></tr>");
+        }
+        actors += "</table>";
+        String genres = "";
         for(String s : movie.getGenres())
         {
-            text2 += (s+" ");
+            genres += (s+", ");
         }
-        tvGenres.setText(text2);
-
-        tvReleaseDate = dialogView.findViewById(R.id.tv_selected_movie_item_releaseDate);
-        tvReleaseDate.setText(movie.getReleaseDate());
-
+        if(!genres.equals(""))
+        {
+            genres = genres.substring(0,genres.length()-2);
+        }
+        text = "<html><body>"+
+                "<p align=\"justify\">"+((movie.getGenres().size()>1)?"Genres : ":"Genre : ")+genres+"</p>"+
+                "<p align=\"justify\"> Release date : "+movie.getReleaseDate()+"</p>"+
+                "<p align=\"justify\"> Duration : "+movie.getRuntime()+"min</p>"+
+                "<p align=\"justify\">"+movie.getOverview()+"</p>"+
+                actors+
+                "</body></html>";
+        wbDetails.loadData(text, "text/html", "utf-8");
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        // FIRE ZE MISSILES!
-                    }
-                })
-               .setNegativeButton("Nop", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // User cancelled the dialog
                     }
                 });
         // Create the AlertDialog object and return it
+
         builder.setView(dialogView);
         return builder.create();
     }
+
 
 
 
@@ -97,6 +110,8 @@ public class MovieDialogFragment extends DialogFragment
     {
         this.movie = movie;
     }
+
+
 
 
 

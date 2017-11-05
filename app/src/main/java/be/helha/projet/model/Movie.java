@@ -3,6 +3,7 @@ package be.helha.projet.model;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,6 +34,7 @@ public class Movie {
      */
     public Movie() {
         genres = new ArrayList<String>();
+        actors = new ArrayList<Actor>();
 
     }
 
@@ -168,6 +170,15 @@ public class Movie {
                 e.printStackTrace();
             }
 
+            try
+            {
+                setRuntime((Integer)obj.get("runtime"));
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
+
 
 
 
@@ -178,6 +189,29 @@ public class Movie {
         {
 
         }
+    }
+
+    public void setCredits(String json)
+    {
+        try {
+            JSONObject obj = new JSONObject(json);
+            JSONArray cast = obj.getJSONArray("cast");
+            for(int i = 0;i<cast.length();i++)
+            {
+                if (!((String)cast.getJSONObject(i).get("character")).contains(("uncredited")))
+                {
+                    actors.add(new Actor((String) cast.getJSONObject(i).get("name"), (String) cast.getJSONObject(i).get("character")));
+                }
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Actor> getActors()
+    {
+        return actors;
     }
 
 }

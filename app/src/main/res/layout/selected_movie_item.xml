@@ -34,31 +34,6 @@
         android:layout_gravity="center"
         android:progressTint="@color/star" />
 
-    <TextView
-        android:id="@+id/tv_selected_movie_item_genre"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center" />
-
-
-    <TextView
-        android:id="@+id/tv_selected_movie_item_releaseDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:id="@+id/tv_selected_movie_item_director"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
-
-    <TextView
-        android:id="@+id/tv_selected_movie_item_actors"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
-
     <WebView
         android:id="@+id/tv_selected_movie_item_overview"
         android:layout_width="wrap_content"
