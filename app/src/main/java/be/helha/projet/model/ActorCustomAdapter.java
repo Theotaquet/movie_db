@@ -19,7 +19,7 @@ import be.helha.projet.activity.MenuActivity;
 public class ActorCustomAdapter extends RecyclerView.Adapter<ActorCustomAdapter.CustomViewHolder>
 {
     private Context context;
-    public static List<Actor> actors;
+    private List<Actor> actors;
 
     public static class CustomViewHolder extends RecyclerView.ViewHolder
     {

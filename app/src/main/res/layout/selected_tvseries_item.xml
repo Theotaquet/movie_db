@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|left"
+        android:scrollbars="vertical">
+
+        <WebView
+            android:id="@+id/tv_selected_tvseries_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+        <ImageView
+            android:id="@+id/iv_selected_tvseries_item_poster"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+        <RatingBar
+            android:id="@+id/rb_selected_tvseries_item_rating"
+            android:layout_width="wrap_content"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:stepSize="0.1"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:progressTint="@color/star" />
+
+        <WebView
+            android:id="@+id/tv_selected_tvseries_item_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+
+
+
+
+    </LinearLayout>
+</ScrollView>

@@ -76,12 +76,6 @@ public class MenuActivity extends AppCompatActivity implements MovieAsyncTask.Li
                 if(etSearch.getVisibility() == View.INVISIBLE)
                 {
                     etSearch.setVisibility(View.VISIBLE);
-                    /*etSearch.setActivated(true);
-                    etSearch.setPressed(true);
-                    etSearch.setCursorVisible(true);
-                    etSearch.setTextIsSelectable(true);
-                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);*/
                 }
                 else {
                     etSearch.setVisibility(View.INVISIBLE);

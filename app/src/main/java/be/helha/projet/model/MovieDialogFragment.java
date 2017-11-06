@@ -31,33 +31,25 @@ public class MovieDialogFragment extends DialogFragment
 {
     private Movie movie;
 
-    private TextView tvTitle;
+    private WebView wbTitle;
     private RatingBar RbRating;
     private ImageView iv_poster;
     private WebView wbDetails;
-    private TextView tvDirector;
 
-
-    /*->titre
-->affiche
-->genre
-->date
-->durée
-->réalisateur
-->casting
-->evaluation*/
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Use the Builder class for convenient dialog construction
+
         LayoutInflater inflater = LayoutInflater.from(getActivity());
         View dialogView = inflater.inflate(R.layout.selected_movie_item, null);
+        String text;
 
+        wbTitle = dialogView.findViewById(R.id.tv_selected_movie_item_title);
+        text = "<html><body>"+
+                "<p align=\"justify\">"+movie.getTitle()+"</p>"+
+                "</body></html>";
 
-
-
-        tvTitle = dialogView.findViewById(R.id.tv_selected_movie_item_title);
-        tvTitle.setText(movie.getTitle());
+        wbTitle.loadData(text, "text/html", "utf-8");
 
         RbRating = dialogView.findViewById(R.id.rb_selected_movie_item_rating);
         RbRating.setRating((float)(movie.getVoteAverage()));
@@ -65,9 +57,10 @@ public class MovieDialogFragment extends DialogFragment
         iv_poster = dialogView.findViewById(R.id.iv_selected_movie_item_poster);
         Picasso.with(getContext()).load(movie.getPosterPath()).into(iv_poster);
 
-        wbDetails = dialogView.findViewById(R.id.tv_selected_movie_item_overview);
-        String text;
-        String actors = "<table border=\"1\">";
+        wbDetails = dialogView.findViewById(R.id.tv_selected_movie_item_details);
+
+        String actors = "<table border=\"1\" style =\"border-collapse: collapse;\">";
+        actors += ("<th>Actors</th><th>characters</th>");
         for(Actor a : movie.getActors())
         {
             actors += ("<tr><td>"+a.getName()+"</td><td>"+a.getCharacter()+"</td></tr>");
@@ -85,8 +78,9 @@ public class MovieDialogFragment extends DialogFragment
         text = "<html><body>"+
                 "<p align=\"justify\">"+((movie.getGenres().size()>1)?"Genres : ":"Genre : ")+genres+"</p>"+
                 "<p align=\"justify\"> Release date : "+movie.getReleaseDate()+"</p>"+
-                "<p align=\"justify\"> Duration : "+movie.getRuntime()+"min</p>"+
+                "<p align=\"justify\"> Duration : "+movie.getRuntime()+" min</p>"+
                 "<p align=\"justify\">"+movie.getOverview()+"</p>"+
+                "<p align=\"justify\">Director : "+movie.getDirector()+"</p>"+
                 actors+
                 "</body></html>";
         wbDetails.loadData(text, "text/html", "utf-8");
@@ -94,11 +88,9 @@ public class MovieDialogFragment extends DialogFragment
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        // User cancelled the dialog
+
                     }
                 });
-        // Create the AlertDialog object and return it
-
         builder.setView(dialogView);
         return builder.create();
     }

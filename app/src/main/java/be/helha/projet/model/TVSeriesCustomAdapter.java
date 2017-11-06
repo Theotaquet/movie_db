@@ -1,6 +1,7 @@
 package be.helha.projet.model;
 
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,7 @@ public class TVSeriesCustomAdapter extends RecyclerView.Adapter<TVSeriesCustomAd
 {
 
     private Context context;
-    public static List<TVSeries> tvSeries;
+    private List<TVSeries> tvSeries;
 
     public static class CustomViewHolder extends RecyclerView.ViewHolder
     {
@@ -61,11 +62,9 @@ public class TVSeriesCustomAdapter extends RecyclerView.Adapter<TVSeriesCustomAd
             @Override
             public void onClick(View view)
             {
-                //TVSeriesDialogFragment tvSeriesDialogFragment = new TVSeriesDialogFragment();
-                //tvSeriesDialogFragment.setTv(tv);
-                //movieDialogFragment.show(((FragmentActivity)context).getSupportFragmentManager(),"tag");
-
-
+                TVSeriesDialogFragment tvSeriesDialogFragment = new TVSeriesDialogFragment();
+                tvSeriesDialogFragment.setTvSeries(tv);
+                tvSeriesDialogFragment.show(((FragmentActivity)context).getSupportFragmentManager(),"tag");
             }
         });
 

@@ -12,9 +12,9 @@
     android:gravity="center|left"
     android:scrollbars="vertical">
 
-    <TextView
+    <WebView
         android:id="@+id/tv_selected_movie_item_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
@@ -35,7 +35,7 @@
         android:progressTint="@color/star" />
 
     <WebView
-        android:id="@+id/tv_selected_movie_item_overview"
+        android:id="@+id/tv_selected_movie_item_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>

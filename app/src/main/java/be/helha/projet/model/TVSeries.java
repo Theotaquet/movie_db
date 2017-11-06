@@ -58,7 +58,7 @@ public class TVSeries {
             setName((String)obj.get("name"));
 
             try {
-                if (((String) obj.get("backdrop_path")).equals("null")) {
+                if (((String) obj.get("poster_path")).equals("null")) {
 
                 }
                 else
@@ -103,7 +103,7 @@ public class TVSeries {
             }
             try
             {
-                setNumberOfEpisodes((int)obj.get("numberOfEpisodes"));
+                setNumberOfEpisodes((int)obj.get("number_of_episodes"));
             }
             catch (Exception e)
             {
@@ -111,7 +111,7 @@ public class TVSeries {
             }
             try
             {
-                setPopularity((double)obj.get("popularity"));
+                setPopularity((double)obj.get("popularity")/10);
             }
             catch (Exception e)
             {
@@ -127,10 +127,10 @@ public class TVSeries {
     {
         try {
             JSONObject obj = new JSONObject(json);
-
-            for(int i = 0;i<obj.getJSONArray("cast").length();i++)
+            JSONArray cast = obj.getJSONArray("cast");
+            for(int i = 0;i<cast.length();i++)
             {
-                actors.add(new Actor((String)obj.getJSONArray("cast").getJSONObject(i).get("name"),(String)obj.getJSONArray("cast").getJSONObject(i).get("character")));
+                actors.add(new Actor((String)cast.getJSONObject(i).get("name"),(String)cast.getJSONObject(i).get("character")));
             }
         } catch (JSONException e)
         {

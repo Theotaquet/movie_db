@@ -178,12 +178,6 @@ public class Movie {
             {
                 e.printStackTrace();
             }
-
-
-
-
-
-
         }
         catch(JSONException e)
         {
@@ -203,6 +197,15 @@ public class Movie {
                     actors.add(new Actor((String) cast.getJSONObject(i).get("name"), (String) cast.getJSONObject(i).get("character")));
                 }
             }
+            JSONArray crew = obj.getJSONArray("crew");
+            for(int i = 0;i<crew.length();i++)
+            {
+                if(crew.getJSONObject(i).get("job").equals("Director"))
+                {
+                   director = crew.getJSONObject(i).get("name").toString();
+                }
+            }
+
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -214,4 +217,11 @@ public class Movie {
         return actors;
     }
 
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
 }

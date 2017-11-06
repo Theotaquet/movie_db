@@ -33,7 +33,7 @@ public class MovieCustomAdapter extends RecyclerView.Adapter<MovieCustomAdapter.
 {
 
     private Context context;
-    public static List<Movie> movies;
+    private List<Movie> movies;
 
     public static class CustomViewHolder extends RecyclerView.ViewHolder
     {
