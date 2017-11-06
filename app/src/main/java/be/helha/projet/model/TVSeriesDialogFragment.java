@@ -21,7 +21,6 @@ public class TVSeriesDialogFragment extends DialogFragment
     private TVSeries tvSeries;
 
     private WebView wbTitle;
-
     private RatingBar RbRating;
     private ImageView iv_poster;
     private WebView wbDetails;
@@ -65,6 +64,7 @@ public class TVSeriesDialogFragment extends DialogFragment
         }
         actors += "</table>";
         String genres = "";
+        String creators ="";
         for(String s : tvSeries.getGenres())
         {
             genres += (s+", ");
@@ -73,14 +73,25 @@ public class TVSeriesDialogFragment extends DialogFragment
         {
             genres = genres.substring(0,genres.length()-2);
         }
+
+        for(String s : tvSeries.getCreators())
+        {
+            creators += (s+", ");
+        }
+        if(!creators.equals(""))
+        {
+            creators = creators.substring(0,creators.length()-2);
+        }
+
+
         text = "<html><body>"+
                 "<p align=\"justify\">"+((tvSeries.getGenres().size()>1)?"Genres : ":"Genre : ")+genres+"</p>"+
 
                 "<p align=\"justify\"> Number of episodes : "+ tvSeries.getNumberOfEpisodes()+"</p>"+
-                "<p align=\"justify\">"+"In production :"+((tvSeries.isInProduction())?"yes":"no")+"</p>"+
+                "<p align=\"justify\">"+"In production : "+((tvSeries.isInProduction())?"yes":"no")+"</p>"+
                 "<p align=\"justify\">"+tvSeries.getOverview()+"</p>"+
-                //"<p align=\"justify\">Director : "+movie.getDirector()+"</p>"+
-               // actors+
+                "<p align=\"justify\">Created by : "+creators+"</p>"+
+                actors+
                 "</body></html>";
         wbDetails.loadData(text, "text/html", "utf-8");
 

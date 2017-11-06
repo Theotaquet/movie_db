@@ -59,10 +59,8 @@ public class TVSeriesAsyncTask extends AsyncTask<String,Void,List<TVSeries>>
                 address = "https://api.themoviedb.org/3/tv/" + id + "?api_key=cc4b67c52acb514bdf4931f7cedfd12b";
                 responseText = makeRequest(address);
                 tv.createTVSeries(responseText);
-                //Log.i()
-
-                //Log.i("tv",tv.getPosterPath());
-                //tv.setCredits(responseText);
+                address = makeRequest("https://api.themoviedb.org/3/tv/" + id + "/credits?api_key=cc4b67c52acb514bdf4931f7cedfd12b");
+                tv.setCredits(address);
                 this.tvSeries.add(tv);
             }
         }
