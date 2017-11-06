@@ -89,6 +89,8 @@ public class TVSeriesDialogFragment extends DialogFragment
 
                 "<p align=\"justify\"> Number of episodes : "+ tvSeries.getNumberOfEpisodes()+"</p>"+
                 "<p align=\"justify\">"+"In production : "+((tvSeries.isInProduction())?"yes":"no")+"</p>"+
+                "<p align=\"justify\">"+"First air date : "+tvSeries.getFirstAirDate()+"</p>"+
+                "<p align=\"justify\">"+"Last air date : "+ tvSeries.getLastAirDate()+"</p>"+
                 "<p align=\"justify\">"+tvSeries.getOverview()+"</p>"+
                 "<p align=\"justify\">Created by : "+creators+"</p>"+
                 actors+

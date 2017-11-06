@@ -6,10 +6,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Clement on 19-10-17.
- */
-
 public class Actor
 {
     private String name;
