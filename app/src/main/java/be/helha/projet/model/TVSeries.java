@@ -95,7 +95,7 @@ public class TVSeries {
             }
             try
             {
-                setInProduction((boolean)obj.get("inProduction"));
+                setInProduction((boolean)obj.get("in_production"));
             }
             catch (Exception e)
             {

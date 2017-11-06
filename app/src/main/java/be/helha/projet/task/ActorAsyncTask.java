@@ -77,6 +77,8 @@ public class ActorAsyncTask extends AsyncTask<String,Void,List<Actor>>
                         makeRequest(address);
                         TVSeries tv = new TVSeries();
                         tv.createTVSeries(makeRequest(address));
+                        address = "https://api.themoviedb.org/3/tv/"+id+"/credits?api_key=cc4b67c52acb514bdf4931f7cedfd12b";
+                        tv.setCredits(makeRequest(address));
                         actor.addTVSeries(tv);
                     }
                     else
